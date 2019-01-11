@@ -39,7 +39,7 @@ class Qpdf
   def lock(source_file, locked_file, user_password, owner_password, key_length = 40)
     args = [user_password, owner_password, key_length, '--']
 
-    err = Open3.popen3(command(:decrypt, source_file, locked_file, *args)) do |stdin, stdout, stderr|
+    err = Open3.popen3(command(:encrypt, source_file, locked_file, *args)) do |stdin, stdout, stderr|
       stderr.read
     end
   rescue Exception => e
